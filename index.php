@@ -78,24 +78,15 @@
 <body>
 <div id="wrap">
 <div id="head">
-<h1>ひとこと掲示板</h1>
+<img  class="logo-top" src="images/top-siro-2.png">
+<img src="images/top-img.jpg">
+<h1>Tomoki's  twitter</h1>
 </div>
 <div id="content">
 <div id="lead">
-<div style="text-align:right">
+<div class="logout">
 <a href="logout.php"> ログアウト</a>
 </div>
-<form action="" method="post">
-	<dl>
-
-    	<dt><?php echo htmlspecialchars($member['name']); ?>さん、メッセージをどうぞ</dt>
-    	<dd><textarea name="message" cols="50" rows="5"><?php echo htmlspecialchars($message,ENT_QUOTES,'UTF-8');?>
-        
-        </textarea><input type="hidden" name="reply_post_id" value="<?php echo htmlspecialchars($_REQUEST['res'],ENT_QUOTES,'UTF-8');?>">
-        </dd>
-    </dl>
-    <div><input type="submit" value="投稿する"></div>
-</form>
 <?php while($post = mysqli_fetch_assoc($posts)): ?>
     <div class="msg">
     
@@ -132,10 +123,21 @@
 <li>次のページへ</li>
 <?php }?>
 </ul>
+<form action="" method="post">
+	<dl>
+
+    	<dt><?php echo htmlspecialchars($member['name']); ?>さん、メッセージをどうぞ</dt>
+    	<dd><textarea name="message" cols="50" rows="5"><?php echo htmlspecialchars($message,ENT_QUOTES,'UTF-8');?>
+        
+        </textarea><input type="hidden" name="reply_post_id" value="<?php echo htmlspecialchars($_REQUEST['res'],ENT_QUOTES,'UTF-8');?>">
+        </dd>
+    </dl>
+    <div><input type="submit" value="投稿する"></div>
+</form>
 </div>
 </div>
 <div id="foot">
-<p><img src="../images/txt_copyright.png" width="136" height="15" alt="(C) H2O SPACE, Mynavi" /></p>
+<p>tomoki twitter</p>
 </div>
 
 </div>
