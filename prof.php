@@ -5,7 +5,13 @@
 		header('Location: index.php');
 		exit();
 		}
-	$sql = sprintf('SELECT m.name, m.picture, p.* FROM members m, posts p WHERE m.id=p.member_id AND p.id=%d ORDER BY p.created DESC',
+	$sql = sprintf('SELECT * FROM members WHERE id=%d',
+		mysqli_real_escape_string($db, $_REQUEST['id'])
+	);
+	$record = mysqli_query($db, $sql) or die(mysqli_error($db));
+	$member = mysqli_fetch_assoc($record);
+
+	$sql = sprintf('SELECT m.name, m.picture, p.* FROM members m, posts p WHERE m.id=p.member_id AND p.member_id=%d ORDER BY p.created DESC',
 		mysqli_real_escape_string($db,$_REQUEST['id'])
 	);
 	
@@ -22,18 +28,26 @@
 
 <body>
 <div id="wrap" class="rap">
-<div id="head">
-<img  class="logo-top" src="images/top-siro-2.png">
-<img src="images/top-img.jpg">
-<h1>Tomoki's  twitter</h1>
+<div class="prof">
+	<div class="top-prof">
+		<img src="member_picture/<?php echo htmlspecialchars($member['picture'],ENT_QUOTES,'UTF-8');?>" height="250px" alt="<?php echo htmlspecialchars($member['name'],ENT_QUOTES,'UTF-8');?>" >
+	</div>
+	
 </div>
-<div id="content" class="prof-view">
-<div class="logout">
-<a href="logout.php"> ログアウト</a>
-</div>
-<p>&laquo;<a href="index.php">一覧に戻る</a></p>
-<?php if($post = mysqli_fetch_assoc($posts)):?> 
-      <div class="msg">
+
+<div id="content" class="prof-con">
+	<div class="text-prof">
+			<img src="member_picture/<?php echo htmlspecialchars($member['picture'],ENT_QUOTES,'UTF-8');?>" width="48" height="48" alt="<?php echo htmlspecialchars($member['name'],ENT_QUOTES,'UTF-8');?>" >
+			<p class="prof-name"><a href="prof.php?id=<?php echo htmlspecialchars($member['id'],ENT_QUOTES,'UTF-8');?>">(<?php echo htmlspecialchars($member['name'],ENT_QUOTES,'UTF-8');?>)</a></p>
+			<p class="prof-text"><?php echo htmlspecialchars($member['text'],ENT_QUOTES,'UTF-8');?></p>
+	</div>
+	<div class="logout">
+		<a href="logout.php"> ログアウト</a>
+	</div>
+	<div class="twittet">
+	<p>&laquo;<a href="index.php">一覧に戻る</a></p>
+	<?php while($post = mysqli_fetch_assoc($posts)):?> 
+	    <div class="msg">
 	    
 	        <img src="member_picture/<?php echo htmlspecialchars($post['picture'],ENT_QUOTES,'UTF-8');?>" alt="<?php echo htmlspecialchars($post['name'],ENT_QUOTES,'UTF-8');?>" >
 	        <div class="msg-2">
@@ -47,7 +61,8 @@
 	        </div>
 	    </div>
 
-<?php endif;?>
+	<?php endwhile;?>
+	</div>
 
 </div>
 <div id="foot">

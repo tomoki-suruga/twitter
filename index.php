@@ -72,17 +72,35 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(function(){
+		$(".form p").click(function(){
+			if( $(".form-a").css("display") == "none"){
+				$(".form-a").slideDown(500);
+				$(".togi").show();
+				$(".kaku").hide();
+			}else{
+				$(".form-a").slideUp(500);
+				$(".togi").hide();
+				$(".kaku").show();
+			}
+
+		});
+
+	});
+</script>
 <title>ひとこと掲示板</title>
 </head>
 
 <body>
-<div id="wrap">
+<div id="wrap" class="rap">
 <div id="head">
 <img  class="logo-top" src="images/top-siro-2.png">
 <img src="images/top-img.jpg">
 <h1>Tomoki's  twitter</h1>
 </div>
-<div id="content">
+<div id="content" class="content-index">
 <div id="lead">
 <div class="logout">
 <a href="logout.php"> ログアウト</a>
@@ -90,11 +108,14 @@
 <?php while($post = mysqli_fetch_assoc($posts)): ?>
     <div class="msg">
     
-        <img src="member_picture/<?php echo htmlspecialchars($post['picture'],ENT_QUOTES,'UTF-8');?>" width="48" height="48" alt="<?php echo htmlspecialchars($post['name'],ENT_QUOTES,'UTF-8');?>" >
+        <img src="member_picture/<?php echo htmlspecialchars($post['picture'],ENT_QUOTES,'UTF-8');?>" alt="<?php echo htmlspecialchars($post['name'],ENT_QUOTES,'UTF-8');?>" >
+        <div class="msg-2">
+        <p class="prof"><span class="name"><a href="prof.php?id=<?php echo htmlspecialchars($post['member_id'],ENT_QUOTES,'UTF-8');?>">(<?php echo htmlspecialchars($post['name'],ENT_QUOTES,'UTF-8');?>)</a></span>
+        <span class="time"><?php echo htmlspecialchars($post['created'],ENT_QUOTES,'UTF-8');?></span>
         <p><?php echo makeLink(htmlspecialchars($post['message'],ENT_QUOTES,'UTF-8'));?>
-        <span class="name">(<?php echo htmlspecialchars($post['name'],ENT_QUOTES,'UTF-8');?>)</span>
+        
         [<a href="index.php?res=<?php echo htmlspecialchars($post['id'],ENT_QUOTES,'UTF-8');?>">Re</a>]</p>
-        <p class="day"><a href="view.php?id=<?php echo htmlspecialchars($post['id'],ENT_QUOTES,'UTF-8');?>"><?php echo htmlspecialchars($post['created'],ENT_QUOTES,'UTF-8');?></a>
+        
         <?php if($post['reply_post_id'] > 0):?>
         <a href="view.php?id=<?php echo htmlspecialchars($post['reply_post_id'],ENT_QUOTES,'UTF-8');?>">返信元のメッセージ</a>
         <?php endif;?>
@@ -107,7 +128,7 @@
         endif;
         ?>
         </p>
-        
+        </div>
     </div>
 <?php endwhile ;?>
 
@@ -115,26 +136,32 @@
 <?php if($page > 1){?>
 <li><a href="index.php?page=<?php print($page-1);?>">前のページへ</a></li>
 <?php }else{?>
-<li>前のページへ</li>
+<li></li>
 <?php }?>
 <?php if($page < $maxPage){?>
 <li><a href="index.php?page=<?php print($page+1);?>">次のページへ</a></li>
 <?php }else{?>
-<li>次のページへ</li>
+<li></li>
 <?php }?>
 </ul>
-<form action="" method="post">
-	<dl>
 
-    	<dt><?php echo htmlspecialchars($member['name']); ?>さん、メッセージをどうぞ</dt>
-    	<dd><textarea name="message" cols="50" rows="5"><?php echo htmlspecialchars($message,ENT_QUOTES,'UTF-8');?>
-        
+</div>
+</div>
+<div class="form">
+<p><span class="kaku">messageを書く</span><span class="togi">閉じる</span></p>
+<form action="" method="post" class="form-a">
+<div class="content-index">
+
+	<dl>
+    	<dt><?php echo htmlspecialchars($member['name']); ?> さん、メッセージをどうぞ　　　　　　</dt>
+    	<dd><textarea name="message" cols="70" rows="10"><?php echo htmlspecialchars($message,ENT_QUOTES,'UTF-8');?>
+       
         </textarea><input type="hidden" name="reply_post_id" value="<?php echo htmlspecialchars($_REQUEST['res'],ENT_QUOTES,'UTF-8');?>">
         </dd>
     </dl>
-    <div><input type="submit" value="投稿する"></div>
+    <div class="form-div"><input type="submit" value="投稿する"></div>
+    </div>
 </form>
-</div>
 </div>
 <div id="foot">
 <p>tomoki twitter</p>
