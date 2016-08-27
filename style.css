@@ -187,13 +187,14 @@ color:#38388f;
 #content{padding:30px 15px;
 }
 
-#lead{border-top:1px solid #ddd;}
+.content-index2{border-top:1px solid #ddd;}
 
 .msg{padding:10px;
 border-bottom:1px solid #ddd;
 border-right:1px solid #ddd;
 border-left:1px solid #ddd;
-background:#fff;}
+background:#fff;
+width:100%;}
 
 .msg img{width:75px;
 height:75px;
@@ -272,11 +273,32 @@ border-radius:10px;}
 
 .content-index{width:1000px;
 margin:0 auto;}
+.content-index2{width:600px;
+margin-right:50px;
+}
+.news{width:30%;
+background:#ddf;
+padding:25px;
+border-radius:5px;}
 
+.news p{color:#fff;
+font-weight:bold;
+font-size:22px;}
+.news ul{padding-left:0;}
+.news li{font-size:14px;}
+.news li span{font-size:14px;
+color:#aaa;}
+.news li{margin-bottom:10px;}
 .content-index dt{margin-bottom:20px;
 font-size:20px;
 color:#fff;
 font-weight:bold;}
+.content-index1 div{float:left;}
+.content-index1:after {
+  content: "";
+  clear: both;
+  display: block;
+}
 .form-a {display:none;}
 .form-a:after {
   content: "";
@@ -290,4 +312,33 @@ margin:0;
 padding:20px;}
 .form p:hover{background:#99f;}
 .togi{display:none;}
+
+.login-page{width:320px;
+margin:0 auto;
+border-top:0;}
+.login-f{font-size:20px;}
+.login-f input {font-size:18px;
+border:solid #aaf 1px;
+border-radius:3px;
+margin-top:10px;
+margin-bottom:10px;
+padding:5px;}
+.login-i input {
+margin-top:10px;
+margin-bottom:10px;
+padding:5px;}
+.kiroku{font-size:14px;
+}
+.btn input{width:100%;
+	height:30px;
+color:#fff;
+background:#77f;
+border-radius:5px;}
+.error {
+	font-size:14px;
+	font-size: 90%;
+	color: #f00;
+}
+.btn input:hover{background:#aaf;}
 .foot{margin-bottom:30px;}
+

@@ -52,18 +52,20 @@
 <body>
 <div id="wrap">
 <div id="head">
-<h1>ログインする</h1>
+<img  class="logo-top" src="images/top-siro-2.png">
+<img src="images/top-img.jpg">
+<h1>ログインする。</h1>
 </div>
 <div id="content">
-<div id="lead">
+<div id="lead-2" class="login-page">
 <p>メールアドレスとパスワードを入力してください。</p>
 <p>入会手続きがまだの方はこちらからどうぞ。</p>
 <p>&raquo;<a href="join/">入会手続きをする</a></p>
 <form action="" method="post">
 	<dl>
 
-    	<dt>メールアドレス</dt>
-    	<dd><input type="text" name="email" size="35" maxlangth="255"
+    	<dt class="login-f">メールアドレス</dt>
+    	<dd class="login-f"><input type="text" name="email" size="20" maxlangth="255" placeholder="email"
         value="<?php echo htmlspecialchars($_POST['email']);?>"/>
         
         <?php if($error['login'] == 'blank'): ?>
@@ -76,22 +78,22 @@
         
         </dd>
 
-        <dt>パスワード</dt>
-    	<dd><input type="password" name="password" size="10" maxlangth="20"
+        <dt class="login-f">パスワード</dt>
+    	<dd class="login-f"><input type="password" name="password" size="20" maxlangth="20"  placeholder="password"
         value="<?php echo htmlspecialchars($_POST['password']);?>"/>
         </dd>
 
-        <dt>ログイン情報の記録</dt>
-    	<dd><input id="save" type="checkbox" name="save" value="on"/>
+        <dt class="kiroku">ログイン情報の記録</dt>
+    	<dd class="kiroku"><input id="save" type="checkbox" name="save" value="on"/>
 			<label for="save">次から自動的にログインする</label>
 		</dd>
     </dl>
-    <div><input type="submit" value="ログインする"></div>
+    <div class="btn"><input type="submit" value="ログインする"></div>
 </form>
 </div>
 </div>
 <div id="foot">
-<p><img src="../images/txt_copyright.png" width="136" height="15" alt="(C) H2O SPACE, Mynavi" /></p>
+<p>tomoki twitter</p>
 </div>
 
 </div>

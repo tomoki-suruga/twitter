@@ -51,7 +51,7 @@
 
 </div>
 <div id="foot">
-<p><img src="../images/txt_copyright.png" width="136" height="15" alt="(C) H2O SPACE, Mynavi" /></p>
+<p>tomoki twitter</p>
 </div>
 
 </div>

@@ -64,6 +64,8 @@
 	function makeLink($value) {
 		return mb_ereg_replace("(https?)(://[[:alnum:]\+\$\;\?\.%,!#~*/:@&=_-]+)", '<a href="\1\2">\1\2</a>' , $value);
 	}
+
+
 	
 ?>
 
@@ -88,6 +90,15 @@
 
 		});
 
+	var res = location.search;
+	alert(res);
+
+	if( ~res.indexOf('res')){$(".form-a").slideDown(500);
+				$(".togi").show();
+				$(".kaku").hide();}
+
+
+
 	});
 </script>
 <title>ひとこと掲示板</title>
@@ -105,6 +116,8 @@
 <div class="logout">
 <a href="logout.php"> ログアウト</a>
 </div>
+<div class="content-index1">
+<div class="content-index2">
 <?php while($post = mysqli_fetch_assoc($posts)): ?>
     <div class="msg">
     
@@ -131,7 +144,18 @@
         </div>
     </div>
 <?php endwhile ;?>
+</div>
+<div class="news">
+<p>最近のNEWS</p>
+<ul>
+<li><span>2016-08-15</span>　　newsはダミーです。リンクはってません</li>
+<li><span>2016-08-10</span>　　サイトをリニューアルしました</li>
+<li><span>2016-08-03</span>　　最近また暑くなりましたね</li>
+<li><span>2016-07-31</span>　　ツイッター風サイトを作りました。</li>
+</ul>
+</div>
 
+</div>
 <ul class="paging">
 <?php if($page > 1){?>
 <li><a href="index.php?page=<?php print($page-1);?>">前のページへ</a></li>
@@ -144,6 +168,7 @@
 <li></li>
 <?php }?>
 </ul>
+
 
 </div>
 </div>

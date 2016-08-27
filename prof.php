@@ -11,7 +11,7 @@
 	$record = mysqli_query($db, $sql) or die(mysqli_error($db));
 	$member = mysqli_fetch_assoc($record);
 
-	$sql = sprintf('SELECT m.name, m.picture, p.* FROM members m, posts p WHERE m.id=p.member_id AND p.member_id=%d ORDER BY p.created DESC',
+	$sql = sprintf('SELECT m.name, m.picture, m.background, p.* FROM members m, posts p WHERE m.id=p.member_id AND p.member_id=%d ORDER BY p.created DESC',
 		mysqli_real_escape_string($db,$_REQUEST['id'])
 	);
 	
@@ -30,7 +30,7 @@
 <div id="wrap" class="rap">
 <div class="prof">
 	<div class="top-prof">
-		<img src="member_picture/<?php echo htmlspecialchars($member['picture'],ENT_QUOTES,'UTF-8');?>" height="250px" alt="<?php echo htmlspecialchars($member['name'],ENT_QUOTES,'UTF-8');?>" >
+		<img src="member_picture/<?php echo htmlspecialchars($member['background'],ENT_QUOTES,'UTF-8');?>" height="250px" alt="<?php echo htmlspecialchars($member['name'],ENT_QUOTES,'UTF-8');?>" >
 	</div>
 	
 </div>
@@ -66,7 +66,7 @@
 
 </div>
 <div id="foot">
-<p><img src="../images/txt_copyright.png" width="136" height="15" alt="(C) H2O SPACE, Mynavi" /></p>
+<p>tomoki twitter</p>
 </div>
 
 </div>

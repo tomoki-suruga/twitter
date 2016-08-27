@@ -10,6 +10,8 @@
 <body>
 <div id="wrap">
 <div id="head">
+<img  class="logo-top" src="../images/top-siro-2.png">
+<img src="../images/top-img.jpg">
 <h1>会員登録</h1>
 </div>
 
@@ -20,7 +22,7 @@
 </div>
 
 <div id="foot">
-<p><img src="../images/txt_copyright.png" width="136" height="15" alt="(C) H2O SPACE, Mynavi" /></p>
+<p>tomoki twitter</p>
 </div>
 
 </div>
