@@ -91,7 +91,6 @@
 		});
 
 	var res = location.search;
-	alert(res);
 
 	if( ~res.indexOf('res')){$(".form-a").slideDown(500);
 				$(".togi").show();
